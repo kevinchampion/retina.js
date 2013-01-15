@@ -4,7 +4,16 @@
 
 (function () {
 
-  if (window.devicePixelRatio == 2) {
+  var seperator = retinaImageSeperator == 'undefined' ? '@' : retinaImageSeperator;
+
+  var mediaQuery = "(min--moz-device-pixel-ratio: 1.5),\
+                    (-o-min-device-pixel-ratio: 3/2),\
+                    (-webkit-min-device-pixel-ratio: 1.5),\
+                    (min-device-pixel-ratio: 1.5),\
+                    (min-resolution: 144dpi),\
+                    (min-resolution: 1.5dppx)";
+
+  if (window..matchMedia(mediaQuery).matches) {
 
     var images = document.getElementsByTagName('img');
 
@@ -36,7 +45,7 @@
 
           var imageType = images[i].src.substr(-4);
           var imageName = images[i].src.substr(0, images[i].src.length - 4);
-          imageName += "@2x" + imageType;
+          imageName += seperator + "2x" + imageType;
 
           // Rename image.
           images[i].src = imageName;
