@@ -4,7 +4,7 @@
 
 (function () {
 
-  var seperator = retinaImageSeperator == 'undefined' ? '@' : retinaImageSeperator;
+  var seperator = (typeof retinaImageSeperator == 'undefined') ? '@' : retinaImageSeperator;
 
   var mediaQuery = "(min--moz-device-pixel-ratio: 1.5),\
                     (-o-min-device-pixel-ratio: 3/2),\
@@ -13,7 +13,7 @@
                     (min-resolution: 144dpi),\
                     (min-resolution: 1.5dppx)";
 
-  if (window..matchMedia(mediaQuery).matches) {
+  if (window.matchMedia(mediaQuery).matches) {
 
     var images = document.getElementsByTagName('img');
 
